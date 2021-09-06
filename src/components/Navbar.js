@@ -40,18 +40,20 @@ class Navbar extends Component {
     render() {
         return (
             <div className="Navbar">
-                <ul>
-                    <li>
-                        <p class="logo">
-                            <span class="logo--red">Red</span>
-                            <span class="logo--sec">Sec</span>
-                        </p>
-                    </li>
-                    <li>{this.renderButton("Home")}</li>
-                    <li>{this.renderButton("Services")}</li>
-                    <li>{this.renderButton("Pricing")}</li>
-                    <li>{this.renderButton("Contact")}</li>
-                </ul>
+                <div class="logo">
+                    <p>
+                        <span class="logo--red">Red</span>
+                        <span class="logo--sec">Sec</span>
+                    </p>
+                </div>
+                <div class="navbar-buttons">
+                    <ul>
+                        <li>{this.renderButton("Home")}</li>
+                        <li>{this.renderButton("Services")}</li>
+                        <li>{this.renderButton("Pricing")}</li>
+                        <li>{this.renderButton("Contact")}</li>
+                    </ul>
+                </div>
             </div>
         )
     }

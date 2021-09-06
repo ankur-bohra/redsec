@@ -1,33 +1,21 @@
 .Navbar {
     height: 70px;
-    display: flex;
-    align-content: center;
     background-color: #2b2b2b;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.Navbar ul {
-    list-style-type: none;
-    margin: 0px 0px 0px 20px;
-    padding: 0px;
-    display: flex;
-    vertical-align: middle;
-}
-
-.Navbar li {
-    margin: 0px 20px 0px 0px;
-    height: 70px;
-    display: flex;
-    text-align: center;
-}
-
-.Navbar span {
-    font-size: 30px;
-    font-weight: 700;
-}
-
+/* Logo on the left */
 .logo {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    float: left;
+}
+
+.logo p {
+    font-family:'Segoe UI';
+    margin: 35px 20px 35px 20px;
+    line-height: 0px;
+    font-size: 30px;
+    font-weight: 900;
 }
 .logo--red {
     color: red;
@@ -36,13 +24,33 @@
     color: white;
 }
 
+/* Buttons on the right */
+.navbar-buttons {
+    display: flex;
+    float: right;
+}
+
+.Navbar ul {
+    list-style-type: none;
+    margin: 0px 0px 0px 20px;
+    padding: 0px;
+    display: flex;
+}
+
+.Navbar li {
+    margin: 0px 25px 0px 0px;
+    height: 70px;
+    display: flex;
+}
+
 .Navbar button {
     border: none;
     background: inherit;
-    color: white;
+    color: rgb(240, 240, 240);
     opacity: 0.9;
-    font-size: 20px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 21px;
+    font-weight: 700;
+    font-family:'Segoe UI';
 }
 
 .Navbar button[data-active=true] {
@@ -55,5 +63,5 @@
 }
 
 .Navbar button:active {
-    color: rgb(255, 200, 200);
+    color: rgb(255, 255, 255);
 }
