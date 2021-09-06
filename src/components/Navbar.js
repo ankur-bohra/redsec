@@ -30,7 +30,7 @@ class Navbar extends Component {
     renderButton(name) {
         return (
             <NavbarButton
-                name={name}
+                name={name.toUpperCase()}
                 active={this.state.activeButton === name}
                 onClick={() => this.handleClick(name)}
             />

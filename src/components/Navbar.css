@@ -32,13 +32,13 @@
 
 .Navbar ul {
     list-style-type: none;
-    margin: 0px 0px 0px 20px;
+    margin: 0px 15px 0px 0px;
     padding: 0px;
     display: flex;
 }
 
 .Navbar li {
-    margin: 0px 25px 0px 0px;
+    margin: 0px 15px 0px 15px;
     height: 70px;
     display: flex;
 }
@@ -48,7 +48,7 @@
     background: inherit;
     color: rgb(240, 240, 240);
     opacity: 0.9;
-    font-size: 21px;
+    font-size: 19px;
     font-weight: 700;
     font-family:'Segoe UI';
 }
