@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,300&display=swap');
+
 .Navbar {
-    height: 70px;
+    height: 50px;
     background-color: #2b2b2b;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 /* Logo on the left */
@@ -11,10 +13,10 @@
 }
 
 .logo p {
-    font-family:'Segoe UI';
-    margin: 35px 20px 35px 20px;
+    font-family: 'Roboto', sans-serif;
+    margin: 25px 18px 25px 18px;
     line-height: 0px;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 900;
 }
 .logo--red {
@@ -39,7 +41,7 @@
 
 .Navbar li {
     margin: 0px 15px 0px 15px;
-    height: 70px;
+    height: 50px;
     display: flex;
 }
 
@@ -48,9 +50,9 @@
     background: inherit;
     color: rgb(240, 240, 240);
     opacity: 0.9;
-    font-size: 19px;
+    font-size: 15px;
     font-weight: 700;
-    font-family:'Segoe UI';
+    font-family: 'Roboto', sans-serif;
 }
 
 .Navbar button[data-active=true] {
