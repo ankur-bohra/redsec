@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,300&display=swap');
+
+.block {
+    width: 1920px;
+}
+
+.catchy-block {
+    background-color: #383838;
+    padding: 50px;
+}
+
+.catchy-block .block-content > .catchphrase {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 60px;
+    line-height: 63px;
+    margin-bottom: 20px;
+}
+.catchphrase p {margin: 0px}
+.catchphrase p:nth-child(odd) {color: white}
+.catchphrase p:nth-child(even) {color: red}
+
+.catchy-block .block-content  > p {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    font-size: 22px;
+    width: 28%;
+}
+
+.catchy-block ul {
+    list-style: none;
+    padding: 0
+}
+.catchy-block li {
+    display: inline-block;
+    padding: 0px 30px 0px 0px;
+}
+.catchy-block li button {
+    padding: 0px 20px 0px 20px;
+    height: 47px;
+    border-radius: 18px;
+    background: white;
+    color: #383838;
+    font-size: 18px;
+    line-height: 0px;
+    vertical-align: middle;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
