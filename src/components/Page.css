@@ -6,7 +6,7 @@
 
 .catchy-block {
     background-color: #383838;
-    padding: 50px;
+    padding: 50px 50px 20px 50px;
 }
 
 .catchy-block .block-content > .catchphrase {
@@ -15,17 +15,17 @@
     font-weight: 900;
     font-size: 60px;
     line-height: 63px;
-    margin-bottom: 20px;
 }
 .catchphrase p {margin: 0px}
 .catchphrase p:nth-child(odd) {color: white}
 .catchphrase p:nth-child(even) {color: red}
 
-.catchy-block .block-content  > p {
+.catchy-block .block-content > p {
     font-family: 'Roboto', sans-serif;
     color: white;
-    font-size: 22px;
+    font-size: 20px;
     width: 28%;
+    margin: 15px 0px 20px 0px;
 }
 
 .catchy-block ul {
@@ -47,4 +47,12 @@
     vertical-align: middle;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
+    outline: none;
+    border: 0px;
+}
+.catchy-block li button:hover {
+    background-color: rgb(230, 230 ,230)
+}
+.catchy-block li button:active {
+    padding-top: 3px;
 }
