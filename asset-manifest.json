@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/redsec/static/css/main.8b2329f3.chunk.css",
-    "main.js": "/redsec/static/js/main.637e56ad.chunk.js",
-    "main.js.map": "/redsec/static/js/main.637e56ad.chunk.js.map",
+    "main.js": "/redsec/static/js/main.8aa633a3.chunk.js",
+    "main.js.map": "/redsec/static/js/main.8aa633a3.chunk.js.map",
     "runtime-main.js": "/redsec/static/js/runtime-main.870adefe.js",
     "runtime-main.js.map": "/redsec/static/js/runtime-main.870adefe.js.map",
     "static/js/2.67a0a1d7.chunk.js": "/redsec/static/js/2.67a0a1d7.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.870adefe.js",
     "static/js/2.67a0a1d7.chunk.js",
     "static/css/main.8b2329f3.chunk.css",
-    "static/js/main.637e56ad.chunk.js"
+    "static/js/main.8aa633a3.chunk.js"
   ]
 }
