@@ -4,37 +4,117 @@ import client1_logo from "../images/client1.png"
 import client2_logo from "../images/client2.png"
 import client3_logo from "../images/client3.png"
 import client4_logo from "../images/client4.png"
+import client5_logo from "../images/client5.png"
+import client6_logo from "../images/client6.png"
+import client7_logo from "../images/client7.png"
+import client8_logo from "../images/client8.png"
+import client9_logo from "../images/client9.png"
+import client10_logo from "../images/client10.png"
 
-const alignments = {
-    LEFT: 89/1096,
-    DISTANT_LEFT: 312/1096,
-    CENTER: 545/1096,
-    DISTANT_RIGHT: 784/1096,
-    RIGHT: 1007/1096
+const QUOTES = {
+    "Client 1" : {
+        quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a enim elit",
+        index: 0, image: client1_logo,
+        source: {name: "John Doe",position: "CEO"}
+    },
+    "Client 2" : {
+        quote: "Mauris dapibus, libero sit amet convallis feugiat, massa diam cursus dolor, sit amet volutpat ligula enim eu mauris.",
+        index: 1, image: client2_logo,
+        source: {name: "John Smith",position: "Founder"}
+    },
+    "Client 3" : {
+        quote: "Mauris fringilla sed risus at aliquet. Sed porta nisl et bibendum tincidunt. Curabitur vitae lorem sodales orci ullamcorper sodales.",
+        index: 2, image: client3_logo,
+        source: {name: "Jane Doe",position: "VP"}
+    },
+    "Client 4" : {
+        quote: "Quisque tincidunt turpis elit, vulputate tincidunt lacus egestas ac. Sed scelerisque ullamcorper finibus.",
+        index: 3, image: client4_logo,
+        source: {name: "Jane Smith",position: "President"}
+    },
+    "Client 5" : {
+        quote: "Nunc nisl metus, aliquam nec odio vel, pharetra maximus diam. Aenean quis vestibulum nulla. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
+        index: 4, image: client5_logo,
+        source: {name: "John Doe",position: "CEO"}
+    },
+    "Client 6" : {
+        quote: "Maecenas iaculis sollicitudin justo, nec pretium lorem porta nec. Nulla eros lectus, vehicula gravida vehicula ac, sollicitudin ut diam.",
+        index: 5, image: client6_logo,
+        source: {name: "John Smith",position: "Founder"}
+    },
+    "Client 7" : {
+        quote: "Nullam vel aliquet nunc.",
+        index: 6, image: client7_logo,
+        source: {name: "Jane Doe",position: "VP"}
+    },
+    "Client 8" : {
+        quote: "Nulla id ligula condimentum, aliquet nisi ac, aliquam urna. Aliquam posuere euismod tincidunt.",
+        index: 7, image: client8_logo,
+        source: {name: "Jane Smith",position: "President"}
+    },
+    "Client 9" : {
+        quote: "Fusce nec erat justo. Nam sed vulputate quam. Vivamus lacus purus, consequat id rutrum nec, viverra sed ante.",
+        index: 8, image: client9_logo,
+        source: {name: "Jane Doe",position: "VP"}
+    },
+    "Client 10" : {
+        quote: "Proin pretium ultricies erat, et tincidunt nunc posuere at.",
+        index: 9, image: client10_logo,
+        source: {name: "Jane Smith",position: "President"}
+    },
 }
 
+class BlockHeader extends Component {
+    render() {
+        if (!this.props.title) {
+            return null;
+        } else {
+            return (
+                <div className="block-header">
+                    <p>{this.props.title}</p>
+                </div>
+            )
+        }
+    }
+}
+
+class BlockContent extends Component {
+    render() {
+        return (
+            <div className="block-content">
+                {this.props.children}
+            </div>
+        )
+    }
+}
+
+class Block extends Component {
+    render() {
+        return (
+            <div className={"block" + (this.props.subclass ? " " + this.props.subclass : "")}>
+                <BlockHeader title={this.props.title}/>
+                <BlockContent>
+                    {this.props.children}
+                </BlockContent>
+            </div>
+        )
+    }
+}
 
 class CatchyBlock extends Component {
     render() {
+        let buttons_list = []
+        for (const [button, callback] of Object.entries(this.props.buttons)) {
+            buttons_list.push(<li><button key={button} onClick={callback}>{button}</button></li>)
+        };
         return (
-            <div class={"block catchy-block"}>
-                <div class="block-header">
-                    {this.props.title ? <p class="block-title">{this.props.title}</p>
-                                             : null}
+            <Block title={this.props.title} subclass="catchy-block">
+                <div className="catchphrase">
+                    {this.props.catchphrase.map(line => <p>{line}</p>)}
                 </div>
-                <div class="block-content">
-                    <div class="catchphrase">
-                        {this.props.catchphrase.map(line => <p>{line}</p>)}
-                    </div>
-                    <p>{this.props.text}</p>
-                    <ul>
-                        {
-                            Object.keys(this.props.buttons).map(
-                                (text, i) => <li><button key={i} onClick={this.props.buttons[text]}>{text}</button></li>)
-                        }
-                    </ul>
-                </div>
-            </div>
+                <p>{this.props.text}</p>
+                <ul>{buttons_list}</ul>
+            </Block>
         );
     }
 }
@@ -42,48 +122,49 @@ class CatchyBlock extends Component {
 class QuotesBlock extends Component {
     constructor(props) {
         super(props);
-        this.state = {quote_number: Math.floor(this.props.quotes.length/2)};
+        let queue = []
+        for (const [client, quote_info] of Object.entries(this.props.quotes)) {
+            queue[quote_info.index] = client;
+        }
+        this.state = {
+            queue: queue
+        }
     }
     nextQuote() {
-        if (this.state.quote_number === this.props.quotes.length - 1) {
-            this.setState({quote_number: 0});
-        } else {
-            this.setState({quote_number: this.state.quote_number+1})
-        }
+        let queue = this.state.queue.slice();
+        let head = queue.shift()
+        queue.push(head)
+        this.setState({
+            queue: queue,
+        })
     }
     componentDidMount() {
         this.interval = setInterval(
-            () => this.setState({
-                quote_number: (this.state.quote_number+1) % this.props.quotes.length
-            }),
+            () => this.nextQuote(),
+            // () => this.setState({
+            //     queue: queue.slice().push(queue.shift())
+            // }),
         8000);
     }
     componentWillUnmount() {
         clearInterval(this.interval);
     }
     render() {
-        var current_quote = this.props.quotes[this.state.quote_number];
+        let queue = this.state.queue.slice();
+        let image_order = Object.keys(this.props.quotes).sort(
+            (a, b) => {return this.props.quotes[a].index - this.props.quotes[b].index});
+        let images = image_order.map(
+            (client) => <img src={this.props.quotes[client].image} alt={client} className={queue[0] === client ? "active" : null}/>); 
+        let quote_info = this.props.quotes[queue[0]];
         return (
-            <div class={"block spanning-hinted-image-block"}>
-                <div class="block-header">
-                    {this.props.title ? <p class="block-title">{this.props.title}</p>
-                                             : null}
+            <Block title={this.props.title} subclass="quotes-block">
+                <div className="images"><ul>{images.map((image) => <li>{image}</li>)}</ul></div>
+                <div className="quote">
+                    <p><i>{quote_info.quote}</i></p>
+                    <p>{quote_info.source.name}</p>
+                    <p>{quote_info.source.position + ", " + queue[0]}</p>
                 </div>
-                <div class="block-content">
-                    <div class="image-container">
-                        <ul>
-                            {
-                                this.props.quotes.map(quote => <li><img src={quote[1]["image"]} alt={quote[1]["client"]}/></li>)
-                            }
-                        </ul>
-                        <div class="quote">
-                            <p class="quote-text">{current_quote[0]}</p>
-                            <p class="quote-source">{current_quote[1].name}</p>
-                            <p class="quote-source">{current_quote[1].position + ", " + current_quote[1].client}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </Block>
         );
     }
 }
@@ -93,7 +174,7 @@ function on_request_demo_click(e) {}
 
 class Home extends Component {
     render() {
-        var catchy_block =  <CatchyBlock
+        let catchy_block =  <CatchyBlock
             catchphrase={["We know you", "better than yourself"]}
             text="Our experts have been in the industry since before clients started their companies. We’ve seen every system and penetrated every single one of them."
             buttons={{
@@ -101,36 +182,7 @@ class Home extends Component {
                 "Request a Demo": on_request_demo_click
             }}
         />
-        var quotes = [
-            ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a enim elit", {
-                name: "John Doe",
-                position: "CEO",
-                client: "Client 1",
-                image: client1_logo
-            }],
-            ["Mauris dapibus, libero sit amet convallis feugiat, massa diam cursus dolor, sit amet volutpat ligula enim eu mauris.", {
-                name: "John Smith",
-                position: "Founder",
-                client: "Client 2",
-                image: client2_logo
-            }],
-            ["Mauris fringilla sed risus at aliquet. Sed porta nisl et bibendum tincidunt. Curabitur vitae lorem sodales orci ullamcorper sodales.", {
-                name: "Jane Doe",
-                position: "VP",
-                client: "Client 3",
-                image: client3_logo
-            }],
-            ["Quisque tincidunt turpis elit, vulputate tincidunt lacus egestas ac. Sed scelerisque ullamcorper finibus.", {
-                name: "Jane Smith",
-                position: "President",
-                client: "Client 4",
-                image: client4_logo
-            }]
-        ]
-        var quotes_block = <QuotesBlock
-            title="Our Clients"
-            quotes={quotes}
-        />
+        let quotes_block = <QuotesBlock title="Our Clients" quotes={QUOTES}/>
         return [catchy_block, quotes_block];
     }
 }

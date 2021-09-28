@@ -1,14 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,300&display=swap');
 
 .block {
-    width: 1920px;
+    width: 100%;
+}
+.block-header {width: 100%}
+.block-header p {
+    font-size: 30px;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    line-height: 50px;
+    margin: 0px;
+}
+.block:nth-child(even) {background-color: #383838}
+.block:nth-child(odd) {background-color: #F4F4F4}
+.block:nth-child(even) .block-header p {
+    background-color: #313131;
+    color: #FF3636;
+}
+.block:nth-child(odd) .block-header p {
+    background-color: #FFFFFF;
+    color: #2B2B2B
 }
 
+/* Catchy Block */
 .catchy-block {
     background-color: #383838;
     padding: 50px 50px 20px 50px;
 }
-
 .catchy-block .block-content > .catchphrase {
     font-family: 'Roboto', sans-serif;
     font-style: normal;
@@ -27,7 +46,6 @@
     width: 28%;
     margin: 15px 0px 20px 0px;
 }
-
 .catchy-block ul {
     list-style: none;
     padding: 0
@@ -50,9 +68,48 @@
     outline: none;
     border: 0px;
 }
-.catchy-block li button:hover {
-    background-color: rgb(230, 230 ,230)
+.catchy-block li button:hover {background-color: rgb(230, 230 ,230)}
+.catchy-block li button:active {padding-top: 3px}
+
+/* Quotes Block */
+.quotes-block .block-content {
+    padding: 30px 0px 30px 0px;
 }
-.catchy-block li button:active {
-    padding-top: 3px;
+.quotes-block .images {
+    margin-bottom: 45px;
+    height: 55px;
+}
+.quotes-block .images ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0px;
+}
+.quotes-block .images li {
+    display: inline-block;
+    padding: 0px 30px 0px 0px;
+}
+.quotes-block .images li img {
+    border-radius: 50%;
+    height: 55px;
+    width: 55px;
+}
+.quotes-block .images .active {
+    border: 3px solid  rgba(0, 0, 255, 0.5);
+}
+
+.quotes-block .quote {
+    text-align: center;
+}
+.quotes-block .quote p {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    margin: 0px;
+}
+.quotes-block .quote p:first-child {
+    margin-bottom: 10px;
+    color: #727272;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
 }
