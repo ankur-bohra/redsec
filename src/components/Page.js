@@ -64,6 +64,36 @@ const QUOTES = {
     },
 }
 
+const STEPS = [
+    {
+        title: "Information Gathering",
+        text: "The client gives us information about the scope of testing. We ensure there will be no testing done outside what has been listed."
+    },
+    {
+        title: "Reconnaissance",
+        text: "We gather overlooked publicly-available information from the information provided by the client to understand the system better."
+    },
+    {
+        title: "Discovery and Scanning",
+        text: "We use the gathered information to look for ports and services available for hosts and subdomains."
+    },
+    {
+        title: "Vulnerability Assessment",
+        text: "A vulnerability assessment is conducted ito gain initial knowledge and identify potential security weaknesses that could allow an attacker to gain access to the environment being tested."
+    },
+    {
+        title: "Exploitation",
+        text: "After recognisiing the vulnerabilities, our experts validate, attack and exploit those vulnerabilities."
+    },
+    {
+        title: "Final Report",
+        text: (
+`We create a report explaining the vulnerabilites recognized and how they were exploited as accurately as possible.
+We suggest changes in the system and analyze the extent of the impact possible if said vulnerabilities were to be exploited by a malicious attacker.`
+        )
+    }
+]
+
 class BlockHeader extends Component {
     render() {
         if (!this.props.title) {
@@ -175,6 +205,51 @@ class QuotesBlock extends Component {
     }
 }
 
+class LinkedStepsBlock extends Component {
+    render() {
+        let steps = this.props.steps;
+        let step_list = []
+        for (let i = 0; i < steps.length; i++) {
+            let step = steps[i];
+            let li = (
+                <li key={i}>
+                    <div className="step-number">{i + 1}</div>
+                    {i>0 ? <div className="vertical-line"></div> : null}
+                    <div className="step-content">
+                        <p>{step.title}</p>
+                        <p>{step.text}</p>
+                    </div>
+                </li>
+            )
+            step_list.push(li);
+        }
+        return (
+            <Block title={this.props.title} subclass="steps-block">
+                <div className="steps">
+                    <ul>{step_list}</ul>
+                </div>
+            </Block>
+        );
+    }
+}
+
+class ClosingBlock extends Component {
+    render() {
+        return (
+            <Block title={this.props.title} subclass="closing-block">
+                <div class="logo">
+                    <p>
+                        <span class="logo--red">Red</span>
+                        <span class="logo--sec">Sec</span>
+                    </p>
+                </div>
+                <span class="credits">Made by Arav and Ankur</span>
+                <span class="email">info@redsec.com</span>
+            </Block>
+        );
+    }
+}
+
 function on_case_studies_click(e) {}
 function on_request_demo_click(e) {}
 
@@ -189,7 +264,9 @@ class Home extends Component {
             }}
         />
         let quotes_block = <QuotesBlock title="Our Clients" quotes={QUOTES}/>
-        return [catchy_block, quotes_block];
+        let steps_block = <LinkedStepsBlock title="Our Process" steps={STEPS}/>
+        let closing_block = <ClosingBlock/>
+        return [catchy_block, quotes_block, steps_block, closing_block];
     }
 }
 
