@@ -94,8 +94,13 @@
     height: 55px;
     width: 55px;
 }
+.quotes-block .images button {
+    background: none;
+    border: 0px;
+}
 .quotes-block .images .active {
     border: 3px solid  rgba(0, 0, 255, 0.5);
+    margin: 0px 0px 3px 0px;
 }
 
 .quotes-block .quote {

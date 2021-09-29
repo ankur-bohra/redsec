@@ -122,47 +122,53 @@ class CatchyBlock extends Component {
 class QuotesBlock extends Component {
     constructor(props) {
         super(props);
-        let queue = []
-        for (const [client, quote_info] of Object.entries(this.props.quotes)) {
-            queue[quote_info.index] = client;
-        }
+        this.order = Object.keys(this.props.quotes).sort(
+            (a, b) => {return this.props.quotes[a].index - this.props.quotes[b].index});
         this.state = {
-            queue: queue
+            client: this.order[0]
         }
     }
     nextQuote() {
-        let queue = this.state.queue.slice();
-        let head = queue.shift()
-        queue.push(head)
+        let new_client = this.order[(this.order.indexOf(this.state.client) + 1)%this.order.length];
         this.setState({
-            queue: queue,
+            client: new_client,
         })
     }
     componentDidMount() {
-        this.interval = setInterval(
-            () => this.nextQuote(),
-            // () => this.setState({
-            //     queue: queue.slice().push(queue.shift())
-            // }),
-        8000);
+        this.interval = setInterval(() => this.nextQuote(), 8000);
     }
     componentWillUnmount() {
         clearInterval(this.interval);
     }
+    handleClick(client) {
+        this.setState({
+            client: client
+        })
+        clearInterval(this.interval);
+        this.interval = setInterval(() => this.nextQuote(), 8000);
+    }
     render() {
-        let queue = this.state.queue.slice();
-        let image_order = Object.keys(this.props.quotes).sort(
-            (a, b) => {return this.props.quotes[a].index - this.props.quotes[b].index});
-        let images = image_order.map(
-            (client) => <img src={this.props.quotes[client].image} alt={client} className={queue[0] === client ? "active" : null}/>); 
-        let quote_info = this.props.quotes[queue[0]];
+        let image_list = []
+        let quotes = this.props.quotes;
+        let current_client = this.state.client;
+        this.order.forEach((client, i) => {
+            let li = (
+                <li key={i}>
+                    <button onClick={() => this.handleClick(client)}>
+                        <img src={quotes[client].image} alt={client} className={current_client === client ? "active" : null}/>
+                    </button>
+                </li>
+            )
+            image_list.push(li);
+        })
+        let quote_info = quotes[current_client];
         return (
             <Block title={this.props.title} subclass="quotes-block">
-                <div className="images"><ul>{images.map((image) => <li>{image}</li>)}</ul></div>
+                <div className="images"><ul>{image_list}</ul></div>
                 <div className="quote">
                     <p><i>{quote_info.quote}</i></p>
                     <p>{quote_info.source.name}</p>
-                    <p>{quote_info.source.position + ", " + queue[0]}</p>
+                    <p>{quote_info.source.position + ", " + current_client}</p>
                 </div>
             </Block>
         );
