@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/redsec/static/css/main.2b6851a1.chunk.css",
-    "main.js": "/redsec/static/js/main.7f052791.chunk.js",
-    "main.js.map": "/redsec/static/js/main.7f052791.chunk.js.map",
+    "main.css": "/redsec/static/css/main.e964f176.chunk.css",
+    "main.js": "/redsec/static/js/main.8db9da13.chunk.js",
+    "main.js.map": "/redsec/static/js/main.8db9da13.chunk.js.map",
     "runtime-main.js": "/redsec/static/js/runtime-main.c7f23d6d.js",
     "runtime-main.js.map": "/redsec/static/js/runtime-main.c7f23d6d.js.map",
     "static/js/2.f1d745a3.chunk.js": "/redsec/static/js/2.f1d745a3.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.38aff069.chunk.js": "/redsec/static/js/3.38aff069.chunk.js",
     "static/js/3.38aff069.chunk.js.map": "/redsec/static/js/3.38aff069.chunk.js.map",
     "index.html": "/redsec/index.html",
-    "static/css/main.2b6851a1.chunk.css.map": "/redsec/static/css/main.2b6851a1.chunk.css.map",
+    "static/css/main.e964f176.chunk.css.map": "/redsec/static/css/main.e964f176.chunk.css.map",
     "static/js/2.f1d745a3.chunk.js.LICENSE.txt": "/redsec/static/js/2.f1d745a3.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.c7f23d6d.js",
     "static/js/2.f1d745a3.chunk.js",
-    "static/css/main.2b6851a1.chunk.css",
-    "static/js/main.7f052791.chunk.js"
+    "static/css/main.e964f176.chunk.css",
+    "static/js/main.8db9da13.chunk.js"
   ]
 }
