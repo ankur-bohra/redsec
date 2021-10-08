@@ -12,55 +12,55 @@ import client9_logo from "../images/client9.png"
 import client10_logo from "../images/client10.png"
 
 const QUOTES = {
-    "Client 1" : {
-        quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a enim elit",
+    "Codesk" : {
+        quote: "Every cybersecurity firm we've tried before RedSec has failed to convince us of their precision. RedSec had us in the first ten minutes.",
         index: 0, image: client1_logo,
-        source: {name: "John Doe",position: "CEO"}
+        source: {name: "Malcolm Function",position: "CEO"}
     },
-    "Client 2" : {
-        quote: "Mauris dapibus, libero sit amet convallis feugiat, massa diam cursus dolor, sit amet volutpat ligula enim eu mauris.",
+    "Datact" : {
+        quote: "RedSec's experts clearly dominate the field when it comes to penetration testing, they matched whole firms' analyses in their demo.",
         index: 1, image: client2_logo,
-        source: {name: "John Smith",position: "Founder"}
+        source: {name: "Piff Jenkins",position: "VP"}
     },
-    "Client 3" : {
-        quote: "Mauris fringilla sed risus at aliquet. Sed porta nisl et bibendum tincidunt. Curabitur vitae lorem sodales orci ullamcorper sodales.",
+    "Emult" : {
+        quote: "RedSec has been our go-to cybersecurity firms for three decades, coincidentally we've also had zero breaches in three decades.",
         index: 2, image: client3_logo,
-        source: {name: "Jane Doe",position: "VP"}
+        source: {name: "Douglas Lyphe",position: "Senior Engineer"}
     },
-    "Client 4" : {
-        quote: "Quisque tincidunt turpis elit, vulputate tincidunt lacus egestas ac. Sed scelerisque ullamcorper finibus.",
+    "Opence" : {
+        quote: "We're a cybersecurity company too and we use RedSec.",
         index: 3, image: client4_logo,
-        source: {name: "Jane Smith",position: "President"}
+        source: {name: "Miles Tone",position: "CFO"}
     },
-    "Client 5" : {
-        quote: "Nunc nisl metus, aliquam nec odio vel, pharetra maximus diam. Aenean quis vestibulum nulla. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
+    "Software Socket" : {
+        quote: "Using RedSec to secure our softwares allows us to do what we do best, and patch holes as RedSec shows us the way.",
         index: 4, image: client5_logo,
-        source: {name: "John Doe",position: "CEO"}
+        source: {name: "Fig Nelson",position: "Team Lead"}
     },
-    "Client 6" : {
-        quote: "Maecenas iaculis sollicitudin justo, nec pretium lorem porta nec. Nulla eros lectus, vehicula gravida vehicula ac, sollicitudin ut diam.",
+    "Metech" : {
+        quote: "Switching to RedSec from an internal security team completely stopped the frequent breaches, and saved us lots of cash better spent elsewhere.",
         index: 5, image: client6_logo,
-        source: {name: "John Smith",position: "Founder"}
+        source: {name: "Eleanor Fant",position: "Ex-CEO"}
     },
-    "Client 7" : {
-        quote: "Nullam vel aliquet nunc.",
+    "Computism" : {
+        quote: "Quick and detailed testing. Phenomenal services.",
         index: 6, image: client7_logo,
-        source: {name: "Jane Doe",position: "VP"}
+        source: {name: "Gunther Beard",position: "COO"}
     },
-    "Client 8" : {
-        quote: "Nulla id ligula condimentum, aliquet nisi ac, aliquam urna. Aliquam posuere euismod tincidunt.",
+    "NetSystems.io" : {
+        quote: "Our company has went through several cutbacks in changes in leadership in the past. No one has ever considered changing from RedSec.",
         index: 7, image: client8_logo,
-        source: {name: "Jane Smith",position: "President"}
+        source: {name: "Guy Mann",position: "President"}
     },
-    "Client 9" : {
-        quote: "Fusce nec erat justo. Nam sed vulputate quam. Vivamus lacus purus, consequat id rutrum nec, viverra sed ante.",
+    "Techip" : {
+        quote: "The best of the best.",
         index: 8, image: client9_logo,
-        source: {name: "Jane Doe",position: "VP"}
+        source: {name: "Dianne Ameter",position: "Senior Engineer"}
     },
-    "Client 10" : {
-        quote: "Proin pretium ultricies erat, et tincidunt nunc posuere at.",
+    "Nicalc" : {
+        quote: "Briliant.",
         index: 9, image: client10_logo,
-        source: {name: "Jane Smith",position: "President"}
+        source: {name: "Valentino Morose",position: "CEO"}
     },
 }
 
@@ -114,7 +114,7 @@ class BlockContent extends Component {
             <div className="block-content">
                 {this.props.children}
             </div>
-        )
+        )   
     }
 }
 
@@ -170,7 +170,7 @@ class QuotesBlock extends Component {
     componentWillUnmount() {
         clearInterval(this.interval);
     }
-    handleClick(client) {
+    handleHover(client) {
         this.setState({
             client: client
         })
@@ -184,7 +184,7 @@ class QuotesBlock extends Component {
         this.order.forEach((client, i) => {
             let li = (
                 <li key={i}>
-                    <button onClick={() => this.handleClick(client)}>
+                    <button onMouseEnter={() => this.handleHover(client)}>
                         <img src={quotes[client].image} alt={client} className={current_client === client ? "active" : null}/>
                     </button>
                 </li>
@@ -196,9 +196,9 @@ class QuotesBlock extends Component {
             <Block title={this.props.title} subclass="quotes-block">
                 <div className="images"><ul>{image_list}</ul></div>
                 <div className="quote">
-                    <p><i>{quote_info.quote}</i></p>
+                    <p><i>“{quote_info.quote}”</i></p>
                     <p>{quote_info.source.name}</p>
-                    <p>{quote_info.source.position + ", " + current_client}</p>
+                    <p><b>{quote_info.source.position + ", " + current_client}</b></p>
                 </div>
             </Block>
         );
@@ -214,7 +214,6 @@ class LinkedStepsBlock extends Component {
             let li = (
                 <li key={i}>
                     <div className="step-number">{i + 1}</div>
-                    {i>0 ? <div className="vertical-line"></div> : null}
                     <div className="step-content">
                         <p>{step.title}</p>
                         <p>{step.text}</p>
@@ -225,6 +224,7 @@ class LinkedStepsBlock extends Component {
         }
         return (
             <Block title={this.props.title} subclass="steps-block">
+                <hr style={{"height" :182*(steps.length-1)}}/>
                 <div className="steps">
                     <ul>{step_list}</ul>
                 </div>
@@ -243,8 +243,8 @@ class ClosingBlock extends Component {
                         <span class="logo--sec">Sec</span>
                     </p>
                 </div>
-                <span class="credits">Made by Arav and Ankur</span>
-                <span class="email">info@redsec.com</span>
+                <span class="credits">Made by Ankur and Arav</span>
+                <span class="email"><i>Icons from namelix.com</i> ⠀⠀⠀info@redsec.com</span>
             </Block>
         );
     }
