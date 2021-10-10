@@ -58,7 +58,7 @@ const QUOTES = {
         source: {name: "Dianne Ameter",position: "Senior Engineer"}
     },
     "Nicalc" : {
-        quote: "Briliant.",
+        quote: "Brilliant.",
         index: 9, image: client10_logo,
         source: {name: "Valentino Morose",position: "CEO"}
     },
@@ -79,11 +79,11 @@ const STEPS = [
     },
     {
         title: "Vulnerability Assessment",
-        text: "A vulnerability assessment is conducted ito gain initial knowledge and identify potential security weaknesses that could allow an attacker to gain access to the environment being tested."
+        text: "A vulnerability assessment is conducted to gain initial knowledge and identify potential security weaknesses that could allow an attacker to gain access to the environment being tested."
     },
     {
         title: "Exploitation",
-        text: "After recognisiing the vulnerabilities, our experts validate, attack and exploit those vulnerabilities."
+        text: "After recognising the vulnerabilities, our experts validate, attack and exploit those vulnerabilities."
     },
     {
         title: "Final Report",
